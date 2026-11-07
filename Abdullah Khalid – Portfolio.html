@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abdullah Khalid – AI Graduate &amp; Full Stack Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F4F1;--surface:#FFFFFF;--ink:#12222B;--muted:#4B5B62;--line:#CBD3D0;--accent:#0E6B6B;--accent-ink:#FFFFFF;--hi:#E8A33D;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A20;--surface:#16252D;--ink:#EAF0EE;--muted:#A3B3B8;--line:#2B3C45;--accent:#5CC7BE;--accent-ink:#0F1A20;--hi:#E8A33D}}
+:root[data-theme="dark"]{--bg:#0F1A20;--surface:#16252D;--ink:#EAF0EE;--muted:#A3B3B8;--line:#2B3C45;--accent:#5CC7BE;--accent-ink:#0F1A20;--hi:#E8A33D}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Public Sans",system-ui,sans-serif}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--hi);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:22px 0;font-weight:500;font-size:15px}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--ink)}
+nav .name{color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-weight:700;margin-right:auto}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;margin:0}
+h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:800;letter-spacing:-.03em;max-width:14ch}
+h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:28px}
+h3{font-size:1.25rem;font-weight:700}
+.hero{padding:56px 0 40px}
+.lede{max-width:56ch;color:var(--muted);font-size:1.15rem;margin:24px 0 32px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent)}
+.signal{width:100%;height:auto;margin-top:48px;display:block}
+.signal path{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-dasharray:1800;stroke-dashoffset:1800;animation:draw 2.4s ease-out forwards}
+.signal .fall{stroke:var(--hi);stroke-width:3}
+.signal text{fill:var(--muted);font:500 13px "Public Sans",sans-serif}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.signal path{animation:none;stroke-dashoffset:0}}
+section{padding:56px 0;border-top:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px}
+.card p{margin:10px 0 14px;color:var(--muted);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{font-size:.82rem;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--muted)}
+.card.feature{grid-column:1/-1;border-left:6px solid var(--hi)}
+.job,.edu{display:grid;grid-template-columns:200px 1fr;gap:12px 32px;margin-bottom:36px}
+.when{color:var(--muted);font-size:.95rem}
+.job ul{margin:12px 0 0;padding-left:20px;color:var(--muted)}
+.job li{margin-bottom:6px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px}
+.skills h3{font-size:1.05rem;margin-bottom:10px}
+.skills ul{margin:0;padding-left:18px;color:var(--muted)}
+.about{max-width:62ch}
+footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+@media (max-width:640px){.job,.edu{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav aria-label="Main">
+  <a class="name" href="#top">Abdullah Khalid</a>
+  <a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+</nav>
+
+<header class="hero" id="top">
+  <h1>I build software that makes things easier to use.</h1>
+  <p class="lede">MSc Applied AI graduate and full stack developer. I’ve built e-commerce apps with React, Laravel and Shopify, and trained a deep learning model that detects falls from live sensor data.</p>
+  <div class="btns">
+    <a class="btn primary" href="#projects">See my projects</a>
+    <a class="btn ghost" href="mailto:mabdullah.k988@gmail.com">Email me</a>
+  </div>
+  <svg class="signal" viewBox="0 0 900 140" role="img" aria-label="Accelerometer signal with a spike where a fall is detected">
+    <path d="M0 80 L40 76 L80 84 L120 72 L160 86 L200 74 L240 82 L280 70 L320 84 L360 76 L400 80 L440 78 L470 20 L490 128 L510 40 L530 100 L560 78 L600 82 L640 76 L680 84 L720 78 L760 82 L800 76 L840 82 L900 78"/>
+    <path class="fall" d="M440 78 L470 20 L490 128 L510 40 L530 100 L560 78"/>
+    <text x="545" y="30">Fall detected: alert sent</text>
+  </svg>
+</header>
+
+<section id="about">
+  <h2>About me</h2>
+  <p class="about">I finished my MSc in Applied Artificial Intelligence at South East Technological University in 2026, after a BSc in Information Technology in Lahore. Before moving to Ireland I spent two years building and supporting customer-facing online stores. I like work where technology removes friction for real people, and I’m looking for a graduate role where I can do that.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="grid">
+    <article class="card feature">
+      <h3>Fall Detection System with Deep Learning</h3>
+      <p>MSc dissertation. I processed accelerometer and gyroscope data from the SisFall dataset, then trained and compared several deep learning models to tell falls apart from everyday movement, with live sensors and real-time alerting.</p>
+      <ul class="tags"><li>Python</li><li>TensorFlow / Keras</li><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li></ul>
+    </article>
+    <article class="card">
+      <h3>Translatify</h3>
+      <p>A Shopify app that translates product titles, descriptions, tags and variants with DeepL and OpenAI, then updates the store through Shopify GraphQL to improve SEO content.</p>
+      <ul class="tags"><li>Shopify GraphQL</li><li>DeepL</li><li>OpenAI</li></ul>
+    </article>
+    <article class="card">
+      <h3>WhatBot</h3>
+      <p>A WhatsApp chatbot that automates customer replies and notifications, with webhooks, message logging and a database-driven message workflow.</p>
+      <ul class="tags"><li>Laravel</li><li>PHP</li><li>MySQL</li><li>Webhooks</li></ul>
+    </article>
+    <article class="card">
+      <h3>Merchmallow Store</h3>
+      <p>A merchandise e-commerce store with clear product listings and collections, and a responsive layout that’s easy to follow on desktop and mobile.</p>
+      <ul class="tags"><li>Shopify</li><li>React</li><li>HTML / CSS</li></ul>
+    </article>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Experience and education</h2>
+  <div class="job">
+    <div class="when">Jul 2023 to Aug 2025<br>Lahore, Pakistan</div>
+    <div>
+      <h3>Junior IT Technician &amp; Full Stack Web Developer, Craft Concept</h3>
+      <ul>
+        <li>Designed and maintained customer-facing Shopify applications using React and Laravel.</li>
+        <li>Built front-end components and backend APIs focused on easy navigation and a smooth customer journey.</li>
+        <li>Worked with databases, real-time integrations, Shopify Admin REST APIs and GraphQL mutations.</li>
+        <li>Tested, monitored and maintained applications with the team, debugging errors to keep them stable.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="edu">
+    <div class="when">Sep 2025 to Sep 2026<br>Carlow, Ireland</div>
+    <div><h3>MSc Applied Artificial Intelligence</h3><p style="margin:6px 0 0;color:var(--muted)">South East Technological University. Machine learning, deep learning, AI application domains, intelligent cyber-physical systems.</p></div>
+  </div>
+  <div class="edu">
+    <div class="when">Sep 2020 to Sep 2024<br>Lahore, Pakistan</div>
+    <div><h3>BSc Information Technology</h3><p style="margin:6px 0 0;color:var(--muted)">The Superior University. Web and app development, computer networks, MySQL.</p></div>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div><h3>AI and data</h3><ul><li>Python, Pandas, NumPy</li><li>Machine learning and deep learning</li><li>Time series analysis</li><li>Model evaluation</li></ul></div>
+    <div><h3>Web development</h3><ul><li>React, HTML, CSS</li><li>PHP, Laravel, REST APIs</li><li>MySQL</li><li>Shopify Admin API, GraphQL</li></ul></div>
+    <div><h3>IT support</h3><ul><li>Active Directory</li><li>PC setup, backups, server support</li><li>Troubleshooting and user support</li><li>Networks and IT security basics</li></ul></div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Get in touch</h2>
+  <p class="about">I’m open to graduate programmes and technology roles in Ireland. I hold a full clean driving licence, and references are available on request.</p>
+  <div class="btns" style="margin-top:20px">
+    <a class="btn primary" href="mailto:mabdullah.k988@gmail.com">mabdullah.k988@gmail.com</a>
+    <a class="btn ghost" href="https://www.linkedin.com/" rel="noopener">LinkedIn</a>
+  </div>
+</section>
+</div>
+<footer><div class="wrap">© 2026 Abdullah Khalid</div></footer>
+</body>
+</html>
