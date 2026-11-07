@@ -8,11 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F2F4F1;--surface:#FFFFFF;--ink:#12222B;--muted:#4B5B62;--line:#CBD3D0;--accent:#0E6B6B;--accent-ink:#FFFFFF;--hi:#E8A33D;
+  color-scheme:dark;
+  --bg:#0A0E14;--surface:#111826;--ink:#E6EDF7;--muted:#93A1B5;--line:#1F2A3C;--accent:#4DA3FF;--accent-ink:#04101F;--hi:#FFB547;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A20;--surface:#16252D;--ink:#EAF0EE;--muted:#A3B3B8;--line:#2B3C45;--accent:#5CC7BE;--accent-ink:#0F1A20;--hi:#E8A33D}}
-:root[data-theme="dark"]{--bg:#0F1A20;--surface:#16252D;--ink:#EAF0EE;--muted:#A3B3B8;--line:#2B3C45;--accent:#5CC7BE;--accent-ink:#0F1A20;--hi:#E8A33D}
+:root[data-theme="light"]{color-scheme:light;--bg:#F5F8FC;--surface:#FFFFFF;--ink:#0A1220;--muted:#475569;--line:#D5DEEA;--accent:#0B63CE;--accent-ink:#FFFFFF;--hi:#C77700}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Public Sans",system-ui,sans-serif}
@@ -27,11 +27,19 @@ h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.1;
 h1{font-size:clamp(2.6rem,8vw,5rem);font-weight:800;letter-spacing:-.03em;max-width:14ch}
 h2{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:28px}
 h3{font-size:1.25rem;font-weight:700}
+.hero{position:relative;overflow:hidden}
+#net{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6;pointer-events:none}
+.hero>*:not(canvas){position:relative;z-index:1}
+.typed{font:600 clamp(1.1rem,3vw,1.5rem)/1.4 "Bricolage Grotesque",sans-serif;color:var(--accent);margin:20px 0 0;min-height:1.6em}
+.typed::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.typed::after{animation:none}}
 .hero{padding:56px 0 40px}
 .lede{max-width:56ch;color:var(--muted);font-size:1.15rem;margin:24px 0 32px}
 .btns{display:flex;gap:12px;flex-wrap:wrap}
 .btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
 .btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn:hover{filter:brightness(1.12)}
 .btn.ghost{color:var(--accent)}
 .signal{width:100%;height:auto;margin-top:48px;display:block}
 .signal path{fill:none;stroke:var(--accent);stroke-width:2.5;stroke-linejoin:round;stroke-dasharray:1800;stroke-dashoffset:1800;animation:draw 2.4s ease-out forwards}
@@ -58,9 +66,56 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .about{max-width:62ch}
 footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
 @media (max-width:640px){.job,.edu{grid-template-columns:1fr}}
+
+/* layout switcher */
+.switch{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));display:flex;gap:4px;padding:5px;background:var(--surface);border:1px solid var(--line);border-radius:99px;z-index:50;box-shadow:0 6px 24px rgba(0,0,0,.4);max-width:calc(100% - 24px)}
+.switch button{font:600 13px "Public Sans",sans-serif;padding:8px 14px;border:0;border-radius:99px;background:transparent;color:var(--muted);cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+footer{padding-bottom:110px}
+nav a.active{color:var(--ink);box-shadow:0 2px 0 var(--accent)}
+/* sidebar */
+body[data-layout="sidebar"] nav{position:fixed;inset:0 auto 0 0;width:230px;flex-direction:column;align-items:flex-start;gap:6px;padding:36px 24px;background:var(--surface);border-right:1px solid var(--line);z-index:5}
+body[data-layout="sidebar"] nav .name{margin:0 0 20px;font-size:1.2rem}
+body[data-layout="sidebar"] nav a:not(.name){padding:6px 0;font-size:1rem}
+body[data-layout="sidebar"] .wrap{max-width:none;margin:0 0 0 230px;padding:0 56px}
+body[data-layout="sidebar"] .wrap>*{max-width:860px}
+/* tabs */
+body[data-layout="tabs"] section:not(.on){display:none}
+body[data-layout="tabs"] nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+body[data-layout="tabs"] section{border-top:0}
+/* bento */
+body[data-layout="bento"] .wrap{max-width:1100px;display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+body[data-layout="bento"] nav,body[data-layout="bento"] .hero{grid-column:1/-1}
+body[data-layout="bento"] section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px}
+body[data-layout="bento"] section .card{background:var(--bg)}
+body[data-layout="bento"] #about{grid-column:span 4}
+body[data-layout="bento"] #contact{grid-column:span 2}
+body[data-layout="bento"] #projects{grid-column:1/-1}
+body[data-layout="bento"] #experience,body[data-layout="bento"] #skills{grid-column:span 3}
+body[data-layout="bento"] .job,body[data-layout="bento"] .edu{grid-template-columns:1fr}
+body[data-layout="bento"] .skills{grid-template-columns:1fr}
+body[data-layout="bento"] #contact .btn{display:block;text-align:center;margin-bottom:10px;word-break:break-all}
+/* timeline */
+body[data-layout="timeline"] .wrap{max-width:760px;display:flex;flex-direction:column}
+body[data-layout="timeline"] #about{order:2}
+body[data-layout="timeline"] #experience{order:3}
+body[data-layout="timeline"] #projects{order:4}
+body[data-layout="timeline"] #skills{order:5}
+body[data-layout="timeline"] #contact{order:6}
+body[data-layout="timeline"] section{position:relative;border-top:0;border-left:2px solid var(--line);margin-left:8px;padding:8px 0 44px 32px}
+body[data-layout="timeline"] section h2::before{content:"";position:absolute;left:-9px;top:14px;width:16px;height:16px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+body[data-layout="timeline"] .grid{grid-template-columns:1fr}
+@media (max-width:860px){
+  body[data-layout="sidebar"] nav{position:static;width:auto;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--line);padding:18px 24px}
+  body[data-layout="sidebar"] nav .name{margin:0 auto 0 0}
+  body[data-layout="sidebar"] .wrap{margin:0 auto;padding:0 24px}
+  body[data-layout="bento"] .wrap{grid-template-columns:1fr}
+  body[data-layout="bento"] section{grid-column:1/-1!important}
+}
+@media (max-width:520px){.switch button{font-size:12px;padding:7px 10px}}
 </style>
 </head>
-<body>
+<body data-layout="sidebar">
 <div class="wrap">
 <nav aria-label="Main">
   <a class="name" href="#top">Abdullah Khalid</a>
@@ -68,7 +123,9 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
 </nav>
 
 <header class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
   <h1>I build software that makes things easier to use.</h1>
+  <p class="typed" id="typed" aria-live="off">Training deep learning models</p>
   <p class="lede">MSc Applied AI graduate and full stack developer. I’ve built e-commerce apps with React, Laravel and Shopify, and trained a deep learning model that detects falls from live sensor data.</p>
   <div class="btns">
     <a class="btn primary" href="#projects">See my projects</a>
@@ -188,6 +245,72 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
   </div>
 </section>
 </div>
+<div class="switch" role="group" aria-label="Page layout">
+  <button type="button" data-l="sidebar">Sidebar</button><button type="button" data-l="tabs">Tabs</button><button type="button" data-l="bento">Bento</button><button type="button" data-l="timeline">Timeline</button>
+</div>
 <footer><div class="wrap">© 2026 Abdullah Khalid</div></footer>
+<script>
+(function(){
+var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* typing line */
+var el=document.getElementById("typed");
+var words=["Training deep learning models","Detecting falls from sensor data","Building AI-powered Shopify apps","Putting AI on small devices"];
+if(el&&!reduce){var w=0,c=0,del=false;(function tick(){var t=words[w];c+=del?-1:1;el.textContent=t.slice(0,c);var d=del?30:60;if(!del&&c===t.length){del=true;d=1600}else if(del&&c===0){del=false;w=(w+1)%words.length;d=350}setTimeout(tick,d)})()}
+/* neural network background */
+var cv=document.getElementById("net");if(!cv)return;
+var ctx=cv.getContext("2d"),W=0,H=0,nodes=[],pulses=[],dpr=Math.min(window.devicePixelRatio||1,2),col="#4DA3FF",frame=0;
+function setup(){
+  var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+  col=getComputedStyle(document.documentElement).getPropertyValue("--accent").trim()||col;
+  var n=W<600?26:56;nodes=[];
+  for(var i=0;i<n;i++)nodes.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);var L=W<600?110:140,i,j,a,b,d;
+  ctx.strokeStyle=col;ctx.lineWidth=1;
+  for(i=0;i<nodes.length;i++){a=nodes[i];
+    for(j=i+1;j<nodes.length;j++){b=nodes[j];d=Math.hypot(a.x-b.x,a.y-b.y);
+      if(d<L){ctx.globalAlpha=(1-d/L)*.35;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}}}
+  ctx.globalAlpha=.9;ctx.fillStyle=col;
+  for(i=0;i<nodes.length;i++){a=nodes[i];ctx.beginPath();ctx.arc(a.x,a.y,2.2,0,6.283);ctx.fill()}
+  if(!reduce){
+    if(frame%25===0&&pulses.length<8){i=nodes[Math.random()*nodes.length|0];
+      for(j=0;j<nodes.length;j++){b=nodes[j];d=Math.hypot(i.x-b.x,i.y-b.y);if(b!==i&&d<L){pulses.push({a:i,b:b,t:0});break}}}
+    for(i=pulses.length-1;i>=0;i--){var p=pulses[i];p.t+=.02;
+      if(p.t>=1){pulses.splice(i,1);continue}
+      var x=p.a.x+(p.b.x-p.a.x)*p.t,y=p.a.y+(p.b.y-p.a.y)*p.t;
+      ctx.globalAlpha=1;ctx.fillStyle="#FFB547";ctx.beginPath();ctx.arc(x,y,3.2,0,6.283);ctx.fill();}
+    for(i=0;i<nodes.length;i++){a=nodes[i];a.x+=a.vx;a.y+=a.vy;
+      if(a.x<0||a.x>W)a.vx*=-1;if(a.y<0||a.y>H)a.vy*=-1}
+  }
+  ctx.globalAlpha=1;frame++;
+}
+function loop(){draw();requestAnimationFrame(loop)}
+setup();draw();if(!reduce)loop();
+var rt;window.addEventListener("resize",function(){clearTimeout(rt);rt=setTimeout(function(){setup();draw()},150)});
+})();
+</script>
+<script>
+(function(){
+var btns=document.querySelectorAll(".switch button"),secs=document.querySelectorAll("section"),links=document.querySelectorAll("nav a"),cur="projects";
+function tab(id){cur=id;secs.forEach(function(x){x.classList.toggle("on",x.id===id)});links.forEach(function(a){a.classList.toggle("active",a.getAttribute("href")==="#"+id)})}
+function set(l,save){
+  document.body.setAttribute("data-layout",l);
+  btns.forEach(function(b){b.setAttribute("aria-pressed",b.getAttribute("data-l")===l?"true":"false")});
+  if(l==="tabs")tab(cur);else links.forEach(function(a){a.classList.remove("active")});
+  if(save){try{localStorage.setItem("layout",l)}catch(e){}}
+  window.scrollTo(0,0);window.dispatchEvent(new Event("resize"));
+}
+btns.forEach(function(b){b.addEventListener("click",function(){set(b.getAttribute("data-l"),true)})});
+links.forEach(function(a){a.addEventListener("click",function(e){
+  if(document.body.getAttribute("data-layout")!=="tabs")return;
+  var id=(a.getAttribute("href")||"").slice(1);
+  if(document.getElementById(id)&&document.getElementById(id).tagName==="SECTION"){e.preventDefault();tab(id)}
+})});
+var start="sidebar";try{start=localStorage.getItem("layout")||start}catch(e){}
+if(["sidebar","tabs","bento","timeline"].indexOf(start)<0)start="sidebar";
+set(start,false);window.scrollTo(0,0);
+})();
+</script>
 </body>
 </html>
