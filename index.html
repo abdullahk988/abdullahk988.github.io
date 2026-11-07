@@ -45,6 +45,8 @@ section{padding:56px 0;border-top:1px solid var(--line)}
 .card p{margin:10px 0 14px;color:var(--muted);font-size:.98rem}
 .tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
 .tags li{font-size:.82rem;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--muted)}
+.sub{margin:8px 0 18px;color:var(--muted);font-size:1.1rem}
+.grid+.sub{margin-top:44px}
 .card.feature{grid-column:1/-1;border-left:6px solid var(--hi)}
 .job,.edu{display:grid;grid-template-columns:200px 1fr;gap:12px 32px;margin-bottom:36px}
 .when{color:var(--muted);font-size:.95rem}
@@ -86,26 +88,60 @@ footer{padding:48px 0 64px;border-top:1px solid var(--line);color:var(--muted);f
 
 <section id="projects">
   <h2>Projects</h2>
+  <h3 class="sub">AI and machine learning</h3>
   <div class="grid">
     <article class="card feature">
-      <h3>Fall Detection System with Deep Learning</h3>
-      <p>MSc dissertation. I processed accelerometer and gyroscope data from the SisFall dataset, then trained and compared several deep learning models to tell falls apart from everyday movement, with live sensors and real-time alerting.</p>
-      <ul class="tags"><li>Python</li><li>TensorFlow / Keras</li><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li></ul>
+      <h3>Fall Detection System (MSc dissertation)</h3>
+      <p>Detects human falls from accelerometer and gyroscope data from the SisFall dataset. I built MLP and BiLSTM models that separate falls, normal activity and fall recovery, and the system sends an email alert when a genuine fall is detected.</p>
+      <ul class="tags"><li>Python</li><li>MLP</li><li>BiLSTM</li><li>Pandas</li><li>NumPy</li><li>Scikit-learn</li></ul>
     </article>
     <article class="card">
+      <h3>Email Spam Detection</h3>
+      <p>Classifies emails and SMS messages as spam or legitimate, using text preprocessing and a classifier trained on 5,572 messages.</p>
+      <ul class="tags"><li>Python</li><li>NLP</li><li>Pandas</li><li>Scikit-learn</li></ul>
+    </article>
+    <article class="card">
+      <h3>Raspberry Pi Weather Monitoring</h3>
+      <p>A weather monitor on a Raspberry Pi 4 that reads Sense HAT sensors and shows the data on a Flask dashboard, using a trained neural network model and scaler.</p>
+      <ul class="tags"><li>Raspberry Pi 4</li><li>Flask</li><li>Sense HAT</li><li>TensorFlow / Keras</li></ul>
+    </article>
+    <article class="card">
+      <h3>AI at the Edge: MQTT</h3>
+      <p>Explored lightweight AI and IoT systems, with devices communicating over MQTT at the edge.</p>
+      <ul class="tags"><li>MQTT</li><li>IoT</li><li>Edge AI</li><li>Python</li></ul>
+    </article>
+    <article class="card">
+      <h3>Zeus: Robotics Simulation</h3>
+      <p>A simulated robot and environment built and tested in Webots.</p>
+      <ul class="tags"><li>Webots</li><li>Robotics simulation</li></ul>
+    </article>
+  </div>
+  <h3 class="sub">Web and Shopify development</h3>
+  <div class="grid">
+    <article class="card">
       <h3>Translatify</h3>
-      <p>A Shopify app that translates product titles, descriptions, tags and variants with DeepL and OpenAI, then updates the store through Shopify GraphQL to improve SEO content.</p>
-      <ul class="tags"><li>Shopify GraphQL</li><li>DeepL</li><li>OpenAI</li></ul>
+      <p>A Shopify app that translates product titles, descriptions, tags and variants with DeepL and OpenAI, adds AI-powered SEO optimisation, and updates products through Shopify GraphQL mutations.</p>
+      <ul class="tags"><li>Shopify</li><li>Laravel</li><li>PHP</li><li>GraphQL</li><li>DeepL</li><li>OpenAI</li></ul>
     </article>
     <article class="card">
       <h3>WhatBot</h3>
-      <p>A WhatsApp chatbot that automates customer replies and notifications, with webhooks, message logging and a database-driven message workflow.</p>
-      <ul class="tags"><li>Laravel</li><li>PHP</li><li>MySQL</li><li>Webhooks</li></ul>
+      <p>A WhatsApp chatbot that automates customer replies and notifications, with webhooks, message logging and a database-driven workflow.</p>
+      <ul class="tags"><li>Laravel</li><li>PHP</li><li>WhatsApp API</li><li>MySQL</li><li>Webhooks</li></ul>
+    </article>
+    <article class="card">
+      <h3>Crave Point</h3>
+      <p>An e-commerce storefront with a React and Mantine UI front end, a Laravel back end and Stripe payments.</p>
+      <ul class="tags"><li>React</li><li>Mantine UI</li><li>Laravel</li><li>Stripe</li></ul>
+    </article>
+    <article class="card">
+      <h3>GrowDrop</h3>
+      <p>A Shopify dropshipping app for managing products and dropshipping workflows.</p>
+      <ul class="tags"><li>Shopify</li><li>Laravel</li><li>PHP</li><li>React</li></ul>
     </article>
     <article class="card">
       <h3>Merchmallow Store</h3>
-      <p>A merchandise e-commerce store with clear product listings and collections, and a responsive layout that’s easy to follow on desktop and mobile.</p>
-      <ul class="tags"><li>Shopify</li><li>React</li><li>HTML / CSS</li></ul>
+      <p>A merchandise e-commerce store with clear product listings and collections, and a responsive layout for desktop and mobile.</p>
+      <ul class="tags"><li>Shopify</li><li>Frontend</li><li>E-commerce</li></ul>
     </article>
   </div>
 </section>
